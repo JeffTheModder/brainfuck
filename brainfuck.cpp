@@ -1,6 +1,5 @@
+#include "./brainfuck.h"
 #include <iostream>
-
-using namespace std;
 
 void brainFuck(const char* script) {
     char memory[30000] = {0};
@@ -29,9 +28,9 @@ void brainFuck(const char* script) {
         } else if (script[pos] == '-') {
             --*ptr;
         } else if (script[pos] == '.') {
-            putchar(*ptr);
+            std::putchar(*ptr);
         } else if (script[pos] == ',') {
-            *ptr = getchar();
+            *ptr = std::getchar();
         } else if (script[pos] == '[') {
             if (*ptr) {
                 *lptr = pos;
@@ -56,10 +55,4 @@ void brainFuck(const char* script) {
         }
         pos++;
     }
-}
-
-int main(int argc, char **argv) {
-    brainFuck(">++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.");
-    cout << endl;
-    return 0;
 }
